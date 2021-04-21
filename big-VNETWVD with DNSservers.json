@@ -1,0 +1,37 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": [
+        {
+            "name": "spokeVnet",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2018-08-01",
+            "location": "northeurope",
+            "tags": {},
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.50.0.0/21"
+                    ]
+                },
+                "dhcpOptions": {
+                    "dnsServers": [
+                        "10.0.0.196",
+                        "10.0.0.197",
+                        "168.63.129.16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "wvd-subnet",
+                        "properties": {
+                            "addressPrefix": "10.50.0.0/24"
+                        }
+                    }
+                ]
+            }
+        }
+        ]
+}
